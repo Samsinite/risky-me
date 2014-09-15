@@ -68,11 +68,7 @@
 > 
 > ````json
 > {
->   "action": "join",
-> 
->   "details": {
->     "name": "John Doe"
->   }
+>   "name": "John Doe"
 > }
 > 
 > * Territory Selection

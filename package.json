@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A RISK game implementation using javascript",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": "https://github.com/samsinite/risky-me",
   "engines": {
