@@ -1,3 +1,7 @@
+Communication Interface
+=======================
+Highly subject to change until version 1.0 is released.
+
 # Server -> Client -- Basic Interface
 > ````json
 > {
