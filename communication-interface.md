@@ -4,7 +4,7 @@
 >   "action": "actionName",
 > 
 >   "details": {
->     ...
+>     /* ... */
 >   }
 > }
 > ````
@@ -102,7 +102,7 @@
 >       "terrority": 2,
 >       "units": 2
 >     },
->     ...
+>     /* ... */
 >   ]
 > }
 > ````
@@ -147,7 +147,7 @@
 >       "to": 6,
 >       "units": 4
 >     },
->     ...
+>     /* ... */
 >   ]
 > }
 > ````
@@ -204,7 +204,7 @@
 >       "territory": 2,
 >       "units": 4
 >     },
->     ...
+>     /* ... */
 >   ]
 > }
 > ````
@@ -242,7 +242,7 @@
 >       "to": 6,
 >       "units": 4
 >     },
->     ...
+>     /* ... */
 >   ]
 > }
 > ````
@@ -254,16 +254,16 @@
 >   "result": "error",
 > 
 >   "request": {
->     previous JSON request
+>     /* previous JSON request */
 >   },
 > 
 >   "territoryState": [
 >     {
->       id: 1,
->       controllingPlayer: 1,
->       units: 5
+>       "id": 1,
+>       "controllingPlayer": 1,
+>       "units": 5
 >     },
->     ... for all territorys on map
+>     /* ... for all territorys on map */
 >   ]
 > }
 > ````
