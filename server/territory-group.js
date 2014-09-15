@@ -1,12 +1,12 @@
 var TerritoryGroup = function() {
-  function TerritoryGroup(id, name, additionArmies) {
+  function TerritoryGroup(id, name, additionUnits) {
     this.id             = id;
     this.name           = name;
-    this.additionArmies = additionArmies
+    this.additionUnits = additionUnits;
+    this.territories    = [];
   }
 
   TerritoryGroup.prototype = {
-    territories: []
   };
 
   return TerritoryGroup

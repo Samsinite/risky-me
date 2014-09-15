@@ -222,9 +222,7 @@
   "result": "error",
 
   "request": {
-    {
-      previous JSON request
-    }
+    previous JSON request
   },
 
   "territoryState": [

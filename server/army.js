@@ -2,15 +2,10 @@ var Army = function() {
   function Army(player, territory) {
     this.player    = player;
     this.territory = territory;
+    this.units = 0;
   }
 
   Army.prototype = {
-    troops: 0,
-
-    getPlayer: function() {
-      return this.player;
-    },
-
   };
 
   return Army;
