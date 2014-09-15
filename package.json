@@ -1,0 +1,19 @@
+{
+  "name": "risky-me",
+  "version": "0.1.0",
+  "description": "A RISK game implementation using javascript",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/samsinite/risky-me",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Sam Clopton",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.9.0",
+    "socket.io": "^1.1.0"
+  }
+}
