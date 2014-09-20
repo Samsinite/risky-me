@@ -1,5 +1,5 @@
-var TerritoryGroup = require('server/territory-group');
-var Territory      = require('server/territory');
+var TerritoryGroup = require('./server/territory-group');
+var Territory      = require('./server/territory');
 
 /**
 Example Map:

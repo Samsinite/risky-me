@@ -2,6 +2,7 @@ var express = require('express');
 var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
+var game    = require ('./server/game')();
 
 app.use(express.static(__dirname + '/public'));
 
@@ -9,7 +10,7 @@ io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('chat', function(id, msg) {
-    Game.find('user', id).then(function(user) {
+    game.user(id).then(function(user) {
       io.emit('chat', user.name + ": " + msg);
     }, function() {
       /* no-op, cannot chat without joining game... */
@@ -21,19 +22,23 @@ io.on('connection', function(socket){
     try {
       var action = JSON.parse(msg);
 
-      Game.join(action.name).then(function(response) {
+      game.join(id, action.name).then(function(response) {
         socket.broadcast.to(id).emit('join game', JSON.stringify(response)); 
       }, function(error) {
         socket.broadcast.to(id).emit('join game', JSON.stringify(error)); 
       })
+    }
+    catch (e) {
+      console.log("Unkown Error: ", e);
+    }
   })
 
   socket.on('action', function(id, msg) {
     try {
       var action = JSON.parse(msg);
 
-      Game.find('user', id).then(function(user) {
-        Game.process_action(user, io).then(function(response) {
+      game.user(id).then(function(user) {
+        game.process_action(user, action).then(function(response) {
           io.emit('action', JSON.stringify(response));
         }, function(error) {
           io.emit('action', JSON.stringify(error));
