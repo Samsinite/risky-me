@@ -7,7 +7,7 @@ var Game = function() {
   };
 
   function Game() {
-    this.players = {}
+    this.players = []
   }
 
   // Eliminate chance for race conditions on Single Threaded NodeJS servers.
@@ -34,10 +34,10 @@ var Game = function() {
 
   Game.prototype = {
     playerCount: function() {
-      return Object.keys(this.players).length;
+      return this.players.length;
     },
 
-    join: function(id, username) {
+    join: function(uuid, username) {
       var self = this;
 
       return new RSVP.Promise(function(resolve, reject) {
@@ -48,15 +48,16 @@ var Game = function() {
 
           if (!isExisting) {
             var userId = this.playerCount();
-                player = new Player(userId, username);
+                player = new Player(uuid, userId, username);
 
-            this.players[id] = player;
+            this.players.push(player);
 
             resolve({
               result: "gameJoined",
 
               details: {
-                userId: userId
+                userId: userId,
+                name: player.name
               }
             })
           }
@@ -73,23 +74,25 @@ var Game = function() {
       });
     },
 
-    user: function(id) {
+    user: function(uuid) {
       var self = this;
 
       return new RSVP.Promise(function(resolve, reject) {
-        var player = self.players[id];
+        var player = self.players.filter(function(player) {
+          player.uuid === uuid;
+        })[0];
 
         if (player) {
           resolve(player);
         }
         else {
-          reject("Unkown socket id of " + id)
+          reject("Unkown socket id of " + uuid)
         }
       });
     },
 
     process_action: function(player, action) {
-      
+
     }
   };
 

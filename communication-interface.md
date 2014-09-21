@@ -66,13 +66,33 @@ Highly subject to change until version 1.0 is released.
 > >   }
 > > }
 > > ````
+> > 
+> > * Game Over
+> > 
+> > ````json
+> > {
+> >   "action": "gameOver",
+> > 
+> >   "details": {
+> >     "winner": 1 /* player number of winner */
+> >   }
+> > }
+> > ````
 
-# Client -> Service -- Actions (Player Number known by Server)
+# Client -> Server -- Actions (Player Number known by Server)
 > * Join Game
 > 
 > ````json
 > {
 >   "name": "John Doe"
+> }
+> ````
+> 
+> * Start Game
+> 
+> ````json
+> {
+>   "action": "startGame",
 > }
 > ````
 > 
@@ -161,7 +181,8 @@ Highly subject to change until version 1.0 is released.
 >   "result": "gameJoined",
 > 
 >   "details": {
->     "userId": 1
+>     "userId": 1,
+>     "name": "John Doe"
 >   }
 > }
 > ````
@@ -196,17 +217,21 @@ Highly subject to change until version 1.0 is released.
 > {
 >   "result": "unitPlacement",
 > 
->   "details": [
->     {
->       "territory": 1,
->       "units": 3
->     },
->     {
->       "territory": 2,
->       "units": 4
->     },
->     /* ... */
->   ]
+>   "details": {
+>     placements: [
+>       {
+>         "territory": 1,
+>         "units": 3,
+>       },
+>       {
+>         "territory": 2,
+>         "units": 4
+>       },
+>       /* ... */
+>     ],
+>
+>     userId: 1
+>   }
 > }
 > ````
 > 
@@ -257,6 +282,14 @@ Highly subject to change until version 1.0 is released.
 >   "request": {
 >     /* previous JSON request */
 >   },
+>
+>   "players": [
+>     {
+>       id: 1,
+>       name: "John Doe"
+>     },
+>     /* ... for all players in game */
+>   ],
 > 
 >   "territoryState": [
 >     {

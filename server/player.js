@@ -1,5 +1,6 @@
 var Player = function() {
-  function Player(id, name) {
+  function Player(uuid, id, name) {
+    this.uuid        = uuid;
     this.id          = id;
     this.name        = name;
     this.territories = [];
